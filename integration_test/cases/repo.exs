@@ -1528,6 +1528,7 @@ defmodule Ecto.Integration.RepoTest do
       assert catch_error(TestRepo.insert(%Post{id: inserted.id, title: "second"}, on_conflict: :raise))
     end
 
+    @tag :on_conflict_ignore
     test "on conflict ignore" do
       post = %Post{title: "first", uuid: Ecto.UUID.generate()}
       {:ok, inserted} = TestRepo.insert(post, on_conflict: :nothing)
